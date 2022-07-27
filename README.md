@@ -1,6 +1,6 @@
 # flutter_utilities
 
-Utilities for flutter
+Utilities for flutter, a copied dristribution from souradeep98.
 
 ## Getting Started
 
