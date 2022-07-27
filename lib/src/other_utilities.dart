@@ -10,13 +10,12 @@ class ThemeManager extends StatefulWidget {
   static bool? initialized;
 
   ThemeManager({
-    Key? key,
+    super.key,
     required this.builder,
   })  : assert(
           initialized != null,
           "You must call ThemeManager.initialize() before using it",
-        ),
-        super(key: key);
+        );
 
   static Future<void> initialize([
     ThemeMode initialThemeMode = ThemeMode.system,

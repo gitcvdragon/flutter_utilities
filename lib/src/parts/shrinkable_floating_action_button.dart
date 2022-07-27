@@ -58,7 +58,7 @@ class ShrinkableFloatingActionButton extends StatefulWidget {
   final bool? enableFeedback;
 
   const ShrinkableFloatingActionButton({
-    Key? key,
+    super.key,
     required this.label,
     required this.icon,
     required this.scrollController,
@@ -99,8 +99,7 @@ class ShrinkableFloatingActionButton extends StatefulWidget {
         assert(
           (shrinkOnBackwardScroll && !extendOnBackwardScroll) ||
               !shrinkOnBackwardScroll,
-        ),
-        super(key: key);
+        );
 
   @override
   ShrinkableFloatingActionButtonState createState() =>

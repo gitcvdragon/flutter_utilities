@@ -56,10 +56,10 @@ Future<String> uploadFile(
 class CustomMultipartRequest extends http.MultipartRequest {
   /// Creates a new [MultipartRequest].
   CustomMultipartRequest(
-    String method,
-    Uri url, {
+    super.method,
+    super.url, {
     this.onProgress,
-  }) : super(method, url);
+  });
 
   final void Function(int bytes, int totalBytes)? onProgress;
 

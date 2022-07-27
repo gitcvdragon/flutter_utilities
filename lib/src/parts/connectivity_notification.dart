@@ -25,7 +25,7 @@ class ConnectivityNotification extends StatefulWidget {
   final bool show;
 
   const ConnectivityNotification({
-    Key? key,
+    super.key,
     required this.child,
     this.offlineText = 'No Connection',
     this.onlineUsingMobileDataText = 'Connected using Mobile Data',
@@ -46,7 +46,7 @@ class ConnectivityNotification extends StatefulWidget {
     this.onConnectivityStatusChanged,
     this.onOfflineOnStart,
     this.show = true,
-  }) : super(key: key);
+  });
 
   @override
   _ConnectivityNotificationState createState() =>

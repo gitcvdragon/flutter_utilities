@@ -52,7 +52,7 @@ class InteractionObserver extends StatefulWidget {
   /// * [periodicExecutionDuringInactivityDelay]: The delay between two executions of [periodicExecutionDuringInactivity]
   /// * [child]: The widget to observe user interaction on
   const InteractionObserver({
-    Key? key,
+    super.key,
     this.child,
     this.setAsActiveOnInitialize = true,
     this.onInteractionStart,
@@ -62,7 +62,7 @@ class InteractionObserver extends StatefulWidget {
     this.periodicExecutionDuringActivityDelay = const Duration(seconds: 5),
     this.periodicExecutionDuringInactivity,
     this.periodicExecutionDuringInactivityDelay = const Duration(seconds: 5),
-  }) : super(key: key);
+  });
 
   @override
   _InteractionObserverState createState() => _InteractionObserverState();

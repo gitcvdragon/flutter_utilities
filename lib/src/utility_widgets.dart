@@ -30,10 +30,7 @@ class Null extends StatelessWidget {
   const Null();
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 0,
-      width: 0,
-    );
+    return const SizedBox.shrink();
   }
 }
 
@@ -59,10 +56,10 @@ class PostExe extends StatefulWidget {
   final void Function()? postExecute;
   final Widget? child;
   const PostExe({
-    Key? key,
+    super.key,
     required this.postExecute,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   State<PostExe> createState() => _PostExeState();
@@ -90,13 +87,13 @@ class ConfirmationDialog extends StatelessWidget {
   final MainAxisAlignment actionsAlignment;
   final EdgeInsetsGeometry padding;
   const ConfirmationDialog({
-    Key? key,
+    super.key,
     this.text = 'Are you sure?',
     this.child,
     this.actions,
     this.actionsAlignment = MainAxisAlignment.end,
     this.padding = const EdgeInsets.all(30),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -163,11 +160,11 @@ class ImageView extends StatelessWidget {
   final bool openFullScreen;
   final Duration fadeInDuration;
   const ImageView({
-    Key? key,
+    super.key,
     required this.url,
     this.openFullScreen = false,
     this.fadeInDuration = const Duration(milliseconds: 500),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -185,9 +182,9 @@ class ImageView extends StatelessWidget {
         },
         child: CachedNetworkImage(
           imageUrl: url,
-          errorWidget: (context, url, error) => Container(
+          errorWidget: (context, url, error) => const ColoredBox(
             color: Colors.grey,
-            child: const Center(
+            child:  Center(
               child: Text('Snap! Image failed to load!'),
             ),
           ),
@@ -351,21 +348,21 @@ class Selectable extends StatelessWidget {
   final BorderStyle selectedBorderStyle;
   final void Function()? onSelect;
   const Selectable({
-    Key? key,
+    super.key,
     this.isSelected = false,
     required this.child,
     this.selectedColor = Colors.white,
     this.selectedBorderWidth = 3,
     this.selectedBorderStyle = BorderStyle.solid,
     this.onSelect,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onSelect,
       child: isSelected
-          ? Container(
+          ? DecoratedBox(
               decoration: BoxDecoration(
                 border: Border.all(
                   color: selectedColor,
@@ -605,7 +602,7 @@ class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Duration animationDuration;
 
   SearchAppBar({
-    Key? key,
+    super.key,
     this.leading,
     this.automaticallyImplyLeading = true,
     this.title,
@@ -641,7 +638,7 @@ class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.closeTooltip = 'Close',
     this.animationDuration = const Duration(milliseconds: 300),
     this.onClose,
-  }) : super(key: key);
+  });
 
   static void _onTextFieldChanged(String x) {}
 
@@ -677,10 +674,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
                     : MainAxisAlignment.start,
                 children: [
                   widget.title ??
-                      const SizedBox(
-                        height: 0,
-                        width: 0,
-                      ),
+                      empty,
                 ],
               ),
       ),
@@ -712,10 +706,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
       ],
       key: widget.key,
       leading: _isSearchEnabled
-          ? const SizedBox(
-              height: 0,
-              width: 0,
-            )
+          ? empty
           : widget.leading,
       automaticallyImplyLeading: widget.automaticallyImplyLeading,
       flexibleSpace: widget.flexibleSpace,
@@ -751,13 +742,13 @@ class AnimatedCountInt extends StatelessWidget {
   final Duration duration;
   final Curve curve;
   const AnimatedCountInt({
-    Key? key,
+    super.key,
     required this.begin,
     required this.end,
     required this.builder,
     this.duration = const Duration(seconds: 1),
     this.curve = Curves.easeIn,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -776,13 +767,13 @@ class AnimatedCountDouble extends StatelessWidget {
   final Duration duration;
   final Curve curve;
   const AnimatedCountDouble({
-    Key? key,
+    super.key,
     required this.begin,
     required this.end,
     required this.builder,
     this.duration = const Duration(seconds: 1),
     this.curve = Curves.easeIn,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -799,11 +790,11 @@ class SpinIt extends StatefulWidget {
   final Duration singleSpinDuration;
   final Curve curve;
   const SpinIt({
-    Key? key,
+    super.key,
     required this.child,
     this.singleSpinDuration = const Duration(seconds: 1),
     this.curve = Curves.linear,
-  }) : super(key: key);
+  });
 
   @override
   _SpinItState createState() => _SpinItState();
@@ -857,7 +848,7 @@ class ConstAnimatedListView extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
   final Clip clipBehavior;
   const ConstAnimatedListView({
-    Key? key,
+    super.key,
     required this.itemBuilder,
     this.insertAnimation = _insertAnimation,
     this.removeAnimation = _removeAnimation,
@@ -870,7 +861,7 @@ class ConstAnimatedListView extends StatefulWidget {
     this.shrinkWrap = false,
     this.padding,
     this.clipBehavior = Clip.hardEdge,
-  }) : super(key: key);
+  });
 
   static Widget _insertAnimation(Widget child, Animation<double> animation) =>
       SizeTransition(
@@ -966,11 +957,11 @@ class DoubleBackToExit extends StatefulWidget {
   final Widget child;
   final VoidCallback? showMessage;
   const DoubleBackToExit({
-    Key? key,
+    super.key,
     required this.child,
     this.doublePressDuration = const Duration(seconds: 2),
     required this.showMessage,
-  }) : super(key: key);
+  });
 
   @override
   _DoubleBackToExitState createState() => _DoubleBackToExitState();
@@ -1008,7 +999,7 @@ class LoadMore extends StatefulWidget {
   final bool loadMoreAtStartIfRequired;
 
   const LoadMore({
-    Key? key,
+    super.key,
     required this.child,
     required this.scrollController,
     required this.loadMore,
@@ -1017,7 +1008,7 @@ class LoadMore extends StatefulWidget {
     this.fetchBeforeEdgeOffset = 100,
     this.maxAutoRecursions = 5,
     this.loadMoreAtStartIfRequired = true,
-  }) : super(key: key);
+  });
 
   @override
   _LoadMoreState createState() => _LoadMoreState();
@@ -1107,7 +1098,7 @@ class _LoadMoreState extends State<LoadMore> {
 }
 
 class LoadingIndicator extends StatelessWidget {
-  const LoadingIndicator({Key? key}) : super(key: key);
+  const LoadingIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -1120,9 +1111,9 @@ class LoadingIndicator extends StatelessWidget {
 class EmptyIndicator extends StatelessWidget {
   final String message;
   const EmptyIndicator({
-    Key? key,
+    super.key,
     this.message = 'Empty in here...',
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1141,11 +1132,11 @@ class ErrorIndicator<T extends DataGenerateObservable> extends StatelessWidget {
   final String buttonText;
 
   const ErrorIndicator({
-    Key? key,
+    super.key,
     required this.observable,
     this.widgetBuilder = _errorWidgetBuilder,
     this.buttonText = 'Try Again',
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1179,7 +1170,7 @@ class DataGenerateObserver<T extends DataGenerateObservable>
   final bool Function(T)? shouldShowLoading;
 
   const DataGenerateObserver({
-    Key? key,
+    super.key,
     required this.observable,
     required this.builder,
     required this.dataIsEmpty,
@@ -1190,7 +1181,7 @@ class DataGenerateObserver<T extends DataGenerateObservable>
     this.errorWidgetBuilder = _errorWidgetBuilder,
     this.tryAgainButtonText = 'Try Again',
     this.shouldShowLoading,
-  }) : super(key: key);
+  });
 
   bool get _shouldShowLoading => shouldShowLoading?.call(observable) ??
           observable is PartDataGenerateObservable
@@ -1232,13 +1223,13 @@ class ShakeWidget extends StatelessWidget {
   final Axis direction;
 
   const ShakeWidget({
-    Key? key,
+    super.key,
     this.duration = const Duration(milliseconds: 500),
     this.strength = 20,
     this.curve = Curves.bounceOut,
     required this.child,
     this.direction = Axis.horizontal,
-  }) : super(key: key);
+  });
 
   /// convert 0-1 to 0-1-0
   double shake(double animation) =>
@@ -1265,9 +1256,9 @@ class ProperContext extends StatelessWidget {
   final Widget child;
 
   const ProperContext({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   static late BuildContext _context;
   static BuildContext get context => _context;
@@ -1333,11 +1324,11 @@ class MultiValueListenableBuilder<T> extends StatefulWidget {
   final Widget? child;
 
   const MultiValueListenableBuilder({
-    Key? key,
+    super.key,
     required this.valueListenables,
     required this.builder,
     this.child,
-  }) : super(key: key);
+  });
 
   @override
   State<MultiValueListenableBuilder<T>> createState() =>
@@ -1445,14 +1436,14 @@ class SearchField extends StatelessWidget {
   final bool? isFilled;
 
   const SearchField({
-    Key? key,
+    super.key,
     required this.controller,
     this.labelText = 'Search',
     this.hintText,
     this.prefixIcon = const Icon(Icons.search),
     this.margin = const EdgeInsets.all(10),
     this.isFilled,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

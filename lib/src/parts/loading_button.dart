@@ -395,7 +395,7 @@ class LoadingTextButton extends StatefulWidget {
   final Widget failed;
 
   const LoadingTextButton({
-    Key? key,
+    super.key,
     required this.child,
     required this.onPressed,
     this.onCompletionStatusShowDuration = const Duration(seconds: 1),
@@ -412,7 +412,7 @@ class LoadingTextButton extends StatefulWidget {
     this.focusNode,
     this.autofocus = false,
     this.clipBehavior = Clip.none,
-  }) : super(key: key);
+  });
 
   @override
   _LoadingTextButtonState createState() => _LoadingTextButtonState();
