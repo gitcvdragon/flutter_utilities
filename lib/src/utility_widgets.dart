@@ -903,8 +903,8 @@ class ConstAnimatedListViewState extends State<ConstAnimatedListView> {
   int get itemCount => _itemCount;
 
   Future<void> insertItem(
-    final int index, {
-    final Duration duration = const Duration(milliseconds: 300),
+    int index, {
+    Duration duration = const Duration(milliseconds: 300),
   }) async {
     if (index < 0) {
       return;
@@ -915,8 +915,8 @@ class ConstAnimatedListViewState extends State<ConstAnimatedListView> {
   }
 
   Future<void> removeItem(
-    final int index, {
-    final Duration duration = const Duration(milliseconds: 300),
+    int index, {
+    Duration duration = const Duration(milliseconds: 300),
   }) async {
     if (index < 0) {
       return;

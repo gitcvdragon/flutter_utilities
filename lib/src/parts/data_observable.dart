@@ -12,7 +12,7 @@ abstract class DataObservable<T> extends GetxController {
   DataObservable({
     this.name = '',
     this.postInit,
-    required final T? Function(T?)? filter,
+    required T? Function(T?)? filter,
   }) : _singleDataFilter = filter;
 
   /// Generated data
@@ -232,7 +232,7 @@ abstract class DataGenerateObservableX<T, X> extends DataGenerateObservable<T> {
     super.name = '',
     super.postInit,
     super.timeout,
-    required final T? Function(T?, X?)? filter,
+    required T? Function(T?, X?)? filter,
     X? otherData,
     required super.generateOnInit,
   })  : _doubleDataFilter = filter,
@@ -254,11 +254,9 @@ abstract class DataFetchObservable<T> extends DataGenerateObservable<T> {
     super.name = '',
     super.postInit,
     super.timeout,
-    required final T? Function(T?)? filter,
+    required super.filter,
     required super.generateOnInit,
-  }) : super(
-          filter: filter,
-        );
+  });
 
   @override
   @protected
@@ -369,7 +367,7 @@ abstract class DataFetchObservableX<T, X> extends DataFetchObservable<T> {
     super.name = '',
     super.postInit,
     super.timeout,
-    required final T? Function(T?, X?)? filter,
+    required T? Function(T?, X?)? filter,
     X? otherData,
     required super.generateOnInit,
   })  : _doubleDataFilter = filter,
@@ -608,7 +606,7 @@ abstract class PartDataGenerateObservableX<T, X>
     super.name = '',
     super.postInit,
     super.timeout,
-    required final T? Function(T?, X?)? filter,
+    required T? Function(T?, X?)? filter,
     X? otherData,
     required super.generateOnInit,
   })  : _doubleDataFilter = filter,
@@ -741,7 +739,7 @@ abstract class PartDataFetchObservableX<T, X>
     super.name = '',
     super.postInit,
     super.timeout,
-    required final T? Function(T?, X?)? filter,
+    required T? Function(T?, X?)? filter,
     X? otherData,
     required super.generateOnInit,
   })  : _doubleDataFilter = filter,

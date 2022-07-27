@@ -10,11 +10,11 @@ import 'package:flutter_utilities/src/core_classes.dart';
 
 extension IterableUtils<E> on Iterable<E> {
   Map<E, X> presenceMap<X>({
-    required final X defaultValue,
+    required X defaultValue,
     required X presenceValue,
     required Iterable<E> elements,
   }) {
-    final Map<E, bool> _presence = Map<E, bool>.fromEntries(
+    final Map<E, bool> presence = Map<E, bool>.fromEntries(
       elements.map<MapEntry<E, bool>>(
         (e) => MapEntry<E, bool>(e, true),
       ),
@@ -24,7 +24,7 @@ extension IterableUtils<E> on Iterable<E> {
       map<MapEntry<E, X>>(
         (e) => MapEntry<E, X>(
           e,
-          (_presence[e] ?? false) ? presenceValue : defaultValue,
+          (presence[e] ?? false) ? presenceValue : defaultValue,
         ),
       ),
     );
@@ -100,7 +100,7 @@ extension MapUtils<K, V> on Map<K, V> {
 
   Map<K, V> difference(
     Map<K, V> other, {
-    final bool ignoreNewFields = false,
+    bool ignoreNewFields = false,
   }) {
     final Map<K, V> result = {};
     other.forEach((key, value) {
@@ -272,7 +272,7 @@ extension StringUtils on String {
   List<String> get words => split(' ').map<String>((e) => e.trim()).toList()
     ..removeWhere((element) => element.isEmpty);
 
-  List<String> sentences({final Pattern pattern = "."}) =>
+  List<String> sentences({Pattern pattern = "."}) =>
       split(pattern).map<String>((e) => e.trim()).toList()
         ..removeWhere((x) => x.isEmpty);
 
@@ -281,7 +281,7 @@ extension StringUtils on String {
   /// Credit goes to https://pub.dev/packages/remove_emoji
   String removeEmoji({
     String emojiWord = '',
-    final bool trim = false,
+     bool trim = false,
   }) =>
       RemoveEmoji().removemoji(
         this,
@@ -298,35 +298,35 @@ extension DurationUtils on Duration {
   int get inYears => inDays ~/ 365;
 
   String prettyStringCustom({
-    final bool year = false,
-    final bool month = false,
-    final bool week = false,
-    final bool day = false,
-    final bool hour = false,
-    final bool minute = false,
-    final bool second = false,
-    final bool millisecond = false,
-    final bool microsecond = false,
-    final String separator = " ",
-    final String unitSeparator = ", ",
-    final bool reverseOrder = false,
-    final CPair<String, String> yearText =
+     bool year = false,
+     bool month = false,
+     bool week = false,
+     bool day = false,
+     bool hour = false,
+     bool minute = false,
+     bool second = false,
+     bool millisecond = false,
+     bool microsecond = false,
+     String separator = " ",
+     String unitSeparator = ", ",
+     bool reverseOrder = false,
+     CPair<String, String> yearText =
         const CPair<String, String>("Year", "Years"),
-    final CPair<String, String> monthText =
+     CPair<String, String> monthText =
         const CPair<String, String>("Month", "Months"),
-    final CPair<String, String> weekText =
+     CPair<String, String> weekText =
         const CPair<String, String>("Week", "Weeks"),
-    final CPair<String, String> dayText =
+     CPair<String, String> dayText =
         const CPair<String, String>("Day", "Days"),
-    final CPair<String, String> hourText =
+     CPair<String, String> hourText =
         const CPair<String, String>("Hour", "Hours"),
-    final CPair<String, String> minuteText =
+     CPair<String, String> minuteText =
         const CPair<String, String>("Minute", "Minutes"),
-    final CPair<String, String> secondText =
+     CPair<String, String> secondText =
         const CPair<String, String>("Second", "Seconds"),
-    final CPair<String, String> millisecondText =
+     CPair<String, String> millisecondText =
         const CPair<String, String>("Millisecond", "Milliseconds"),
-    final CPair<String, String> microsecondText =
+     CPair<String, String> microsecondText =
         const CPair<String, String>("Microsecond", "Microseconds"),
   }) {
     String _getText(int n, CPair<String, String> texts) =>
@@ -392,34 +392,34 @@ extension DurationUtils on Duration {
   }
 
   String prettyStringHighestOnly({
-    final bool year = true,
-    final bool month = true,
-    final bool week = true,
-    final bool day = true,
-    final bool hour = true,
-    final bool minute = true,
-    final bool second = true,
-    final bool millisecond = false,
-    final bool microsecond = false,
-    final String separator = " ",
-    final String noTimeLeft = "0 Seconds",
-    final CPair<String, String> yearText =
+     bool year = true,
+     bool month = true,
+     bool week = true,
+     bool day = true,
+     bool hour = true,
+     bool minute = true,
+     bool second = true,
+     bool millisecond = false,
+     bool microsecond = false,
+     String separator = " ",
+     String noTimeLeft = "0 Seconds",
+     CPair<String, String> yearText =
         const CPair<String, String>("Year", "Years"),
-    final CPair<String, String> monthText =
+     CPair<String, String> monthText =
         const CPair<String, String>("Month", "Months"),
-    final CPair<String, String> weekText =
+     CPair<String, String> weekText =
         const CPair<String, String>("Week", "Weeks"),
-    final CPair<String, String> dayText =
+     CPair<String, String> dayText =
         const CPair<String, String>("Day", "Days"),
-    final CPair<String, String> hourText =
+     CPair<String, String> hourText =
         const CPair<String, String>("Hour", "Hours"),
-    final CPair<String, String> minuteText =
+     CPair<String, String> minuteText =
         const CPair<String, String>("Minute", "Minutes"),
-    final CPair<String, String> secondText =
+     CPair<String, String> secondText =
         const CPair<String, String>("Second", "Seconds"),
-    final CPair<String, String> millisecondText =
+     CPair<String, String> millisecondText =
         const CPair<String, String>("Millisecond", "Milliseconds"),
-    final CPair<String, String> microsecondText =
+     CPair<String, String> microsecondText =
         const CPair<String, String>("Microsecond", "Microseconds"),
   }) {
     if (inYears > 0 && year) {

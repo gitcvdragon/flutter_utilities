@@ -14,7 +14,7 @@ class VolatileCacheManager {
   int _limit = 20;
 
   // ignore: avoid_setters_without_getters
-  set limit(final int value) {
+  set limit(int value) {
     _limit = value;
   }
 
@@ -136,10 +136,10 @@ class ChangeTracker {
   final Map<String, dynamic> _changesMap = {};
 
   void processChanges<T>({
-    required final T originalValue,
-    required final T modifiedValue,
-    required final String fieldName,
-    final bool Function(T originalValue, T modifiedValue)? removeIf,
+    required T originalValue,
+    required T modifiedValue,
+    required String fieldName,
+    bool Function(T originalValue, T modifiedValue)? removeIf,
   }) {
     if ((removeIf?.call(originalValue, modifiedValue)) ??
         (originalValue == modifiedValue)) {

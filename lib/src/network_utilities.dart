@@ -249,69 +249,69 @@ class HTTP {
   }
 
   static Future<http.Response> get(
-    final Uri uri, {
-    final Map<String, String>? headers,
-    final bool cache = false,
-    final String? cacheKey,
-    final GetFromCache getFromCacheMode = GetFromCache.whenUnableToGetResponse,
+     Uri uri, {
+     Map<String, String>? headers,
+     bool cache = false,
+     String? cacheKey,
+     GetFromCache getFromCacheMode = GetFromCache.whenUnableToGetResponse,
   }) async {
-    late final http.Response _res;
+    late final http.Response res;
     if (cache) {
       final Box<String> cache = await _initializeCache();
       final String key = cacheKey ?? uri.toString();
       switch (getFromCacheMode) {
         case GetFromCache.always:
           if (cache.containsKey(key)) {
-            _res = _responseFromJsonString(cache.get(key)!);
+            res = _responseFromJsonString(cache.get(key)!);
           } else {
-            _res = await _client.get(uri, headers: headers);
-            cache.put(key, _responseToJsonString(_res));
+            res = await _client.get(uri, headers: headers);
+            cache.put(key, _responseToJsonString(res));
           }
           break;
         case GetFromCache.whenUnableToGetResponse:
           try {
-            _res = await _client
+            res = await _client
                 .get(uri, headers: headers)
                 .timeout(timeoutDuration);
-            cache.put(key, _responseToJsonString(_res));
+            cache.put(key, _responseToJsonString(res));
           } catch (e) {
             _printExceptRelease('Error: ${e.toString()}');
             if (cache.containsKey(key)) {
-              _res = _responseFromJsonString(cache.get(key)!);
+              res = _responseFromJsonString(cache.get(key)!);
             } else {
               _printExceptRelease("Couldn't find response in cache!");
               rethrow;
             }
           }
       }
-      if (_res.body.length < 20) {
-        _printExceptRelease('Response: ${_res.body}');
+      if (res.body.length < 20) {
+        _printExceptRelease('Response: ${res.body}');
       }
-      return _res;
+      return res;
     }
     try {
-      _res = await _client.get(uri, headers: headers);
-      if (_res.body.length < 20) {
-        _printExceptRelease('Response: ${_res.body}');
+      res = await _client.get(uri, headers: headers);
+      if (res.body.length < 20) {
+        _printExceptRelease('Response: ${res.body}');
       }
     } catch (e) {
       _printExceptRelease('Error: ${e.toString()}');
     }
-    return _res;
+    return res;
   }
 
   static bool _defaultTrueIf(String x) => x == '1';
 
   static Future<bool> boolGet(
-    final Uri uri, {
-    final Map<String, String>? headers,
-    final bool Function(String) trueIf = _defaultTrueIf,
+     Uri uri, {
+     Map<String, String>? headers,
+     bool Function(String) trueIf = _defaultTrueIf,
   }) async {
-    final http.Response _res = await _client.get(uri, headers: headers);
-    if (_res.body.length < 20) {
-      _printExceptRelease('Response: ${_res.body}');
+    final http.Response res = await _client.get(uri, headers: headers);
+    if (res.body.length < 20) {
+      _printExceptRelease('Response: ${res.body}');
     }
-    return trueIf(_res.body);
+    return trueIf(res.body);
   }
 
   static Future<void> clearCache() async {

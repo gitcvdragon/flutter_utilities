@@ -46,8 +46,7 @@ class Pair<A, B> {
 
   factory Pair.from(Pair<A, B> other) => Pair<A, B>(other.a, other.b);
 
-  factory Pair.fromCPair(final CPair<A, B> other) =>
-      Pair<A, B>(other.a, other.b);
+  factory Pair.fromCPair(CPair<A, B> other) => Pair<A, B>(other.a, other.b);
 }
 
 class CPair<A, B> {
@@ -77,7 +76,7 @@ class CPair<A, B> {
   factory CPair.fromPair(Pair<A, B> other) => CPair<A, B>(other.a, other.b);
 
   List<dynamic> toList({
-    final bool reverse = false,
+    bool reverse = false,
   }) =>
       reverse ? List<dynamic>.from([b, a]) : List<dynamic>.from([a, b]);
 }
@@ -94,13 +93,12 @@ class Triad<A, B, C> extends Pair<A, B> {
     _c = data;
   }
 
-  Triad(A a, B b, C c, {bool unmodifiable = false})
-      : _c = c,
-        super(
-          a,
-          b,
-          unmodifiable: unmodifiable,
-        );
+  Triad(
+    super.a,
+    super.b,
+    C c, {
+    super.unmodifiable = false,
+  }) : _c = c;
 
   @override
   bool operator ==(Object o) =>
@@ -121,7 +119,7 @@ class Triad<A, B, C> extends Pair<A, B> {
 
 class CTriad<A, B, C> extends CPair<A, B> {
   final C c;
-  const CTriad(A a, B b, this.c) : super(a, b);
+  const CTriad(super.a, super.b, this.c);
 }
 
 class Quad<A, B, C, D> extends Triad<A, B, C> {
@@ -136,14 +134,8 @@ class Quad<A, B, C, D> extends Triad<A, B, C> {
     _d = data;
   }
 
-  Quad(A a, B b, C c, D d, {bool unmodifiable = false})
-      : _d = d,
-        super(
-          a,
-          b,
-          c,
-          unmodifiable: unmodifiable,
-        );
+  Quad(super.a, super.b, super.c, D d, {super.unmodifiable = false})
+      : _d = d;
 
   @override
   bool operator ==(Object o) =>
@@ -168,5 +160,5 @@ class Quad<A, B, C, D> extends Triad<A, B, C> {
 
 class CQuad<A, B, C, D> extends CTriad<A, B, C> {
   final D d;
-  const CQuad(A a, B b, C c, this.d) : super(a, b, c);
+  const CQuad(super.a, super.b, super.c, this.d);
 }

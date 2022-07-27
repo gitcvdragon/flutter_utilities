@@ -10,8 +10,8 @@ abstract class LoadingButtonStateMixin {
       ValueNotifier<TaskStatus>(TaskStatus.notStarted);
 
   Future<void> Function()? onAction(
-    final FeedbackCallback? x,
-    final Duration resetDuration,
+     FeedbackCallback? x,
+     Duration resetDuration,
   ) =>
       (x == null)
           ? null
@@ -47,11 +47,11 @@ abstract class LoadingButtonStateMixin {
             };
 
   Widget _childBuilder({
-    required final TaskStatus taskStatus,
-    required final Widget idle,
-    required final Widget inProgress,
-    required final Widget successful,
-    required final Widget failed,
+    required  TaskStatus taskStatus,
+    required  Widget idle,
+    required  Widget inProgress,
+    required  Widget successful,
+    required  Widget failed,
   }) {
     switch (taskStatus) {
       case TaskStatus.notStarted:
@@ -66,10 +66,10 @@ abstract class LoadingButtonStateMixin {
   }
 
   Widget builder({
-    required final Widget idle,
-    required final Widget inProgress,
-    required final Widget successful,
-    required final Widget failed,
+    required  Widget idle,
+    required  Widget inProgress,
+    required  Widget successful,
+    required  Widget failed,
   }) =>
       ValueListenableBuilder<TaskStatus>(
         valueListenable: _taskStatus,
@@ -118,7 +118,7 @@ class LoadingIconButton extends StatefulWidget {
   final Widget failed;
 
   const LoadingIconButton({
-    Key? key,
+    super.key,
     required this.icon,
     required this.onPressed,
     this.onCompletionStatusShowDuration = const Duration(seconds: 1),
@@ -147,7 +147,7 @@ class LoadingIconButton extends StatefulWidget {
     this.tooltip,
     this.enableFeedback = true,
     this.constraints,
-  }) : super(key: key);
+  });
 
   @override
   _LoadingIconButtonState createState() => _LoadingIconButtonState();
@@ -225,7 +225,7 @@ class LoadingFloatingActionButton extends StatefulWidget {
   final Widget failed;
 
   const LoadingFloatingActionButton({
-    final Key? key,
+    super.key,
     required this.child,
     required this.onPressed,
     this.onCompletionStatusShowDuration = const Duration(seconds: 1),
@@ -257,7 +257,7 @@ class LoadingFloatingActionButton extends StatefulWidget {
     this.autofocus = false,
     this.materialTapTargetSize,
     this.isExtended = false,
-  }) : super(key: key);
+  });
 
   @override
   _LoadingFloatingActionButtonState createState() =>
@@ -324,7 +324,7 @@ class LoadingElevatedButton extends StatefulWidget {
   final Widget failed;
 
   const LoadingElevatedButton({
-    Key? key,
+    super.key,
     required this.child,
     required this.onPressed,
     this.onCompletionStatusShowDuration = const Duration(seconds: 1),
@@ -341,7 +341,7 @@ class LoadingElevatedButton extends StatefulWidget {
     this.focusNode,
     this.autofocus = false,
     this.clipBehavior = Clip.none,
-  }) : super(key: key);
+  });
 
   @override
   _LoadingElevatedButtonState createState() => _LoadingElevatedButtonState();

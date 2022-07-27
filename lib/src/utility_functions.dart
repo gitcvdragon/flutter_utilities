@@ -66,8 +66,8 @@ Future<bool> showConfirmationDialog(
     false;
 
 Future<bool> showAndroidConfirmationDialog({
-  required final BuildContext context,
-  final String title = 'Are you sure?',
+  required  BuildContext context,
+   String title = 'Are you sure?',
   String? subtitle,
   bool dismissable = true,
 }) async =>
@@ -106,7 +106,7 @@ Future<bool> showAndroidConfirmationDialog({
   return false;
 }*/
 
-T buildModeConditional<T>({required final T release, T? debug, T? profile}) {
+T buildModeConditional<T>({required T release, T? debug, T? profile}) {
   if (kReleaseMode) {
     return release;
   } else if (kDebugMode) {
@@ -143,9 +143,9 @@ Widget _defaultTransitionBuilder(
     );
 
 Future<T?> showDialogWithHero<T>({
-  required final BuildContext context,
-  required final WidgetBuilder builder,
-  final Widget Function(
+  required BuildContext context,
+  required WidgetBuilder builder,
+  Widget Function(
     BuildContext context,
     Animation<double> animation,
     Animation<double> secondaryAnimation,
@@ -182,7 +182,7 @@ abstract class TextFieldValidators {
 
   static String? mustNotBeEmptyValidator(
     String value, {
-    final String emptyMessage = "This field must not be empty",
+    String emptyMessage = "This field must not be empty",
   }) =>
       value.isEmpty ? emptyMessage : null;
 
@@ -201,8 +201,8 @@ abstract class TextFieldValidators {
 
   static String? emailValidator(
     String str, {
-    final bool canBeEmpty = false,
-    final String errorMessage = "Please enter a valid email address",
+    bool canBeEmpty = false,
+    String errorMessage = "Please enter a valid email address",
   }) {
     if (canBeEmpty && str.isEmpty) {
       return null;
@@ -212,9 +212,9 @@ abstract class TextFieldValidators {
 
   static String? phoneNumberValidator(
     String str, {
-    final bool canBeEmpty = false,
-    final int? length,
-    final String errorMessage = "Please enter a valid phone number",
+    bool canBeEmpty = false,
+    int? length,
+    String errorMessage = "Please enter a valid phone number",
   }) {
     if (canBeEmpty && str.isEmpty) {
       return null;
@@ -227,8 +227,8 @@ abstract class TextFieldValidators {
 
   static String? numericOnlyValidator(
     String str, {
-    final bool canBeEmpty = false,
-    final String errorMessage = "Please enter a numeric value",
+    bool canBeEmpty = false,
+    String errorMessage = "Please enter a numeric value",
   }) {
     if (canBeEmpty && str.isEmpty) {
       return null;
