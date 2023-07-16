@@ -15,14 +15,14 @@ import 'package:flutter_utilities/src/extensions.dart';
 import 'package:flutter_utilities/src/utility_widgets.dart';
 
 /// Print only it is debug mode
-void printExceptRelease(Object message, {int? wrapWidth}) {
+void printExceptRelease(Object? message, {int? wrapWidth}) {
   if (kDebugMode) {
     debugPrint('$message', wrapWidth: wrapWidth);
   }
 }
 
 void logExceptRelease(
-  Object message, {
+  Object? message, {
   DateTime? time,
   int? sequenceNumber,
   int level = 0,
