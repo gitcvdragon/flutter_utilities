@@ -4,27 +4,27 @@ version: 0.0.3
 #homepage:
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  cached_network_image: ^3.2.1
-  file_picker: ^4.6.1
-  http: ^0.13.4
+  cached_network_image: ^3.2.3
+  file_picker: ^5.3.2
+  http: ^1.1.0
   get: ^4.6.5
-  connectivity_plus: ^2.3.6
-  shared_preferences: ^2.0.15
-  flutter_vector_icons: ^1.0.0
-  path: ^1.8.1
-  animations: ^2.0.3
+  connectivity_plus: ^4.0.1
+  shared_preferences: ^2.2.0
+  flutter_vector_icons: ^2.0.0
+  path: ^1.8.3
+  animations: ^2.0.7
   hive_flutter: ^1.1.0
-  remove_emoji: ^0.0.7
+  remove_emoji: ^0.0.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  lint: ^1.10.0
+  lint: ^2.1.2
   dependency_validator: ^3.2.2 #flutter pub run dependency_validator
   import_sorter: ^4.6.0 #flutter pub run import_sorter:main
 

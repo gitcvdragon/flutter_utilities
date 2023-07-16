@@ -1,3 +1,4 @@
+/// 
 library flutter_utilities;
 
 export 'package:flutter_utilities/src/core_classes.dart';

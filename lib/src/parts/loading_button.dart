@@ -4,7 +4,7 @@ typedef FeedbackCallback = Future<bool?> Function();
 
 enum TaskStatus { notStarted, inProgress, successful, failed }
 
-abstract class LoadingButtonStateMixin {
+mixin LoadingButtonStateMixin {
   bool _isMounted = true;
   final ValueNotifier<TaskStatus> _taskStatus =
       ValueNotifier<TaskStatus>(TaskStatus.notStarted);
